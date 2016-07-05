@@ -19,7 +19,10 @@ public class Producto {
      * @return the codigo
      */
     public int getCodigo() {
+        System.out.println("Obteniendo codigo");
+        
         return codigo;
+        
     }
 
     /**
