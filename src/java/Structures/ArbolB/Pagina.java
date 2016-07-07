@@ -5,16 +5,108 @@
  */
 package Structures.ArbolB;
 
+import Bussiness.Venta;
+
 /**
  *
  * @author daniel
  */
+
+
 public class Pagina {
+    public static int correlativo =0;
     
     
-    public Pagina (){
+    private Venta claves[];
+    private Pagina ramas[];
+    private int cuenta;
+    private int orden;
+    private int id;
+    
+    public Pagina (int orden){
+        this.orden=orden;
+        claves = new Venta[orden];
+        ramas= new Pagina[orden];
+        cuenta=0;
+        id=correlativo++;
+        
         
     }
+    
+    
+    public boolean lleno(){
+        return ( cuenta== orden-1);
+        
+    }
+    
+    
+    public boolean medioLleno(){
+        return ( cuenta < orden/2);
+    }
+    
+    public Venta getClave ( int index){
+        try{
+            return claves[index];
+        }catch(Exception ex){
+            return null;
+            
+        }
+        
+        
+    }
+    
+    public void setClave(int index, Venta venta){
+        try{
+            claves[index]= venta;
+        }catch(Exception ex){
+            System.out.println("Error en el indice");
+        }
+        
+            
+    }
+    
+    public Pagina getRama( int index){
+        try{
+               return ramas[index];
+        }catch(Exception ex){
+            return null;
+        }
+     
+    } 
+    
+    public void setRama(int index, Pagina pagina){
+        try{
+                  ramas[index]= pagina;
+        }catch(Exception ex){
+            System.out.println("rama fuera de orden");
+        }
+  
+    }
+    
+    public int getCuenta(){
+        return this.cuenta;
+        
+        
+    }
+    
+    
+    public void setCuenta(int cuenta){
+        this.cuenta= cuenta;
+        
+    }
+    
+    
+    public void imprimirPagina(){
+        System.out.println("Facturas: ");
+        for(int i=1; i<=cuenta; i++){
+            System.out.print(", " + claves[i].getFactura());
+            
+        }
+        System.out.println();
+    }
+    
+    
+    
     
     
 }
