@@ -106,6 +106,28 @@ public class Pagina {
     }
     
     
+    /****** 
+     *              METODOS PARA GRAPHVIZ
+     * 
+     */
+    
+    public String getName(){
+        return "p" + this.id;
+    }
+    
+    public String getLabel(){
+        String retorno="";
+        if(this.getCuenta()>0){
+            retorno+= this.getName() + "[label=\"<f0>";
+            for(int i=1; i<= this.getCuenta(); i++){
+                retorno+= "|"+ claves[i].getClave() + "|<f" + i +">";
+            }
+            retorno+= "\"]\n";
+        }
+        
+        return retorno;
+    }
+    
     
     
     

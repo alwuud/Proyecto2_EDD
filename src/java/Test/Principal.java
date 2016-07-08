@@ -29,6 +29,11 @@ public class Principal {
             ventas.insertar(new Venta(numFactura, "hoy"));
                   
         }
+        
+        ventas.graficar("joder");
+        
+        
+        
     
     
     }

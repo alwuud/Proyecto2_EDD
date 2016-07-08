@@ -48,14 +48,17 @@ public class ArbolB {
         
         
         try{
-            raiz= insertar(this.raiz, v);
+            if(this.buscar( v)==null)
+                raiz= insertar(this.raiz, v);
+            else
+                System.out.println("Colision ");
         }catch(Exception e1){
             System.out.println("Error al realizar insercion");
         }
         
 
         
-        System.out.println("Claves en raiz : "  +raiz.getCuenta());
+       
         /***Variables auxiliares para todo el proceso de insercion**/
         mediana=null;
         nuevaPagina=null;
@@ -79,7 +82,7 @@ public class ArbolB {
             raiz= p;
         }
         
-         raiz.imprimirPagina();
+         
         
         return raiz;
       
@@ -228,6 +231,50 @@ public class ArbolB {
                 return buscar(actual.getRama(b.index), clave);
             }
         }
+    }
+    
+    String codigo;
+    public void graficar(String ruta){
+        codigo="digraph g{\n";
+        try{
+            graficarNodos(this.raiz);
+            graficarPunteros(this.raiz);
+        }catch(Exception e){
+            System.out.println("Error graficando ");
+        }
+        
+        codigo+= "}";
+        
+        System.out.println(codigo);
+        
+               
+    }
+    
+    private void graficarPunteros(Pagina actual){
+        Pagina aux=null;
+        
+        if(actual!=null){
+            for(int i=0; i<= actual.getCuenta(); i++){
+                 aux= actual.getRama(i);
+                 if(aux!=null){
+                     codigo+="\"" + actual.getName() +"\":f" + i +"->" + aux.getName()+ ";\n";
+                 }
+                 graficarPunteros(aux);
+            }
+            
+        }
+    }    
+    
+    private void graficarNodos(Pagina actual){
+       
+        if(actual!=null){
+            codigo+= actual.getLabel();
+            for(int i=0; i<=actual.getCuenta(); i++){
+                graficarNodos(actual.getRama(i));
+                
+            }
+        }
+        
     }
 
 
