@@ -26,16 +26,13 @@ public class Principal {
             System.out.print("Ingrese num factura: ");
             numFactura= teclas.nextInt();
             
-            ventas.insertar(new Venta(numFactura, "hoy"));
+            //ventas.insertar(new Venta(numFactura, "hoy"));
                   
         }
         
         ventas.graficar("joder");
-        
-        
-        
-    
-    
+
     }
+    
     
 }

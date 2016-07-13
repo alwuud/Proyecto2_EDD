@@ -137,7 +137,7 @@ public class ArbolB {
         
         actual.setCuenta(actual.getCuenta()+1);
         
-        }
+    }
     public void dividirNodo(Pagina actual , int indice){
             int i, posMed, k;
             Pagina nuevaPagina= new Pagina(orden);

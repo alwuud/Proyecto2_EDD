@@ -5,6 +5,8 @@
  */
 package Bussiness;
 
+import Structures.AVL.nodoAvl;
+
 /**
  *
  * @author daniel
@@ -14,11 +16,14 @@ public class Venta {
     private int factura;
     private double total;
     private String fecha;
+    private nodoAvl usuario;
     
     
-    public Venta(int factura, String fecha){
+    public Venta(int factura, String fecha, nodoAvl usuario){
         this.factura=factura;
         this.fecha= fecha;
+        
+        this.usuario= usuario;
         
     }
    
