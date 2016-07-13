@@ -6,14 +6,15 @@
 package Structures.AVL;
 
 import Structures.Lista.lista;
+import java.io.Serializable;
 
 /**
  *
  * @author Pau
  */
-public class nodoAvl {
+public class nodoAvl implements Serializable{
     private String usuario;
-    private String contraseña;
+    private String contrasena;
     
     
     private lista direcciones;
@@ -30,18 +31,18 @@ public class nodoAvl {
     private int altura;    
     
     
-    public nodoAvl(String usuario, String contraseña){
+    public nodoAvl(String usuario, String contrasena){
         this.usuario=usuario;
-        this.contraseña=contraseña;
+        this.contrasena=contrasena;
         direcciones=carrito=porComprar=null;
         izq=der=null;
         frec=1;
         fe=0;
     }
     
-    public nodoAvl(String usuario, String contraseña, nodoAvl izq, nodoAvl der){
+    public nodoAvl(String usuario, String contrasena, nodoAvl izq, nodoAvl der){
         this.usuario=usuario;
-        this.contraseña=contraseña;
+        this.contrasena=contrasena;
         direcciones=carrito=porComprar=null;
         this.izq=izq;
         this.der=der;
@@ -66,15 +67,15 @@ public class nodoAvl {
     /**
      * @return the contraseña
      */
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
     /**
-     * @param contraseña the contraseña to set
+     * @param contraseña the contrasena to set
      */
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     /**

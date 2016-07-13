@@ -20,7 +20,7 @@ public class AVL {
     public boolean buscar(String usuario, String password){
         try{
             nodoAvl temp= buscar(usuario,  this.raiz);
-            if(temp!=null &&  temp.getContraseña().equals(password))
+            if(temp!=null &&  temp.getContrasena().equals(password))
                 return true;
             else
                 return false;
@@ -31,7 +31,16 @@ public class AVL {
         
     }
     
-    public nodoAvl buscar(String usuario, nodoAvl raiz){
+    public nodoAvl buscar(String usuario){
+        try{
+            return this.buscar(usuario, this.raiz);
+            
+        }catch(Exception e1){
+            return null;
+        }
+    }
+    
+    private nodoAvl buscar(String usuario, nodoAvl raiz){
                 //Si en nodo recibido fuera nulo entonces el nuevo nodo se puede insertar 
         //en esa posición y se terminan las llamadas recursivas a este método.
         if(raiz == null){
@@ -52,21 +61,21 @@ public class AVL {
        return null;
        
     }
-    public void insertar(String usuario, String contraseña){
+    public void insertar(String usuario, String contrasena){
         try{
-            this.setRaiz(this.insertar(usuario, contraseña, this.raiz));
+            this.setRaiz(this.insertar(usuario, contrasena, this.raiz));
         }catch(Exception e1){
             System.out.println("Error detectado");
         }
     }
-     private nodoAvl insertar(String usuario, String contraseña, nodoAvl raiz){
+     private nodoAvl insertar(String usuario, String contrasena, nodoAvl raiz){
         //Si en nodo recibido fuera nulo entonces el nuevo nodo se puede insertar 
         //en esa posición y se terminan las llamadas recursivas a este método.
         if(raiz == null){
-            raiz = new nodoAvl(usuario, contraseña);
+            raiz = new nodoAvl(usuario, contrasena);
         //Si el nuevo valor fuera menor que el nodo de actual entonces
         }else if(usuario.compareTo(raiz.getUsuario()) < 0){
-            raiz.setIzq(insertar(usuario, contraseña,raiz.getIzq()));            
+            raiz.setIzq(insertar(usuario, contrasena,raiz.getIzq()));            
             if(altura(raiz.getDer())-altura(raiz.getIzq()) == -2)
                 if(usuario.compareTo(raiz.getIzq().getUsuario()) < 0)
                     raiz = IzquierdaIzquierda(raiz);
@@ -76,7 +85,7 @@ public class AVL {
         else if(usuario.compareTo(raiz.getUsuario())>0)
         //Si el nuevo valor fuera mayor que el nodo de la actual entonces:
         {          
-            raiz.setDer(insertar(usuario, contraseña, raiz.getDer()));            
+            raiz.setDer(insertar(usuario, contrasena, raiz.getDer()));            
             if(altura(raiz.getDer())-altura(raiz.getIzq()) == 2)               
                 if(usuario.compareTo(raiz.getDer().getUsuario()) > 0)                   
                     raiz = DerechaDerecha(raiz);

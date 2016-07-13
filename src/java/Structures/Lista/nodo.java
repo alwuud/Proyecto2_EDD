@@ -12,10 +12,14 @@ package Structures.Lista;
  */
 public class nodo {
     private String direccion;
-    private String producto;
-    private int cantidad;
     private boolean facturacion;
     private boolean envio;
+    
+    
+    
+    private String producto;
+    private int cantidad;
+ 
     private nodo siguiente;
     public nodo(String direccion, boolean facturacion, boolean envio, nodo siguiente){
         this.direccion=direccion;
@@ -23,11 +27,15 @@ public class nodo {
         this.facturacion=facturacion;
         this.siguiente=siguiente;
     }
+    
+    
     public nodo(String producto, int cantidad, nodo siguiente){
         this.producto=producto;
         this.cantidad=cantidad;
         this.siguiente=siguiente;
     }
+    
+    
     public String getDireccion() {
         return direccion;
     }

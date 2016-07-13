@@ -5,16 +5,22 @@
  */
 package Bussiness;
 
+import java.io.Serializable;
+
 /**
  *
  * @author daniel
  */
-public class Producto {
+public class Producto implements Serializable{
     
     private int codigo;
     private String nombre, marca, ruta;
     private double precio;
 
+    
+    public Producto(int codigo){
+        this.codigo= codigo;
+    }
     /**
      * @return the codigo
      */
