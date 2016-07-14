@@ -13,6 +13,7 @@ import java.io.Serializable;
  * @author Pau
  */
 public class nodoAvl implements Serializable{
+    public static int id=0;
     private String usuario;
     private String contrasena;
     
@@ -22,13 +23,15 @@ public class nodoAvl implements Serializable{
     private lista porComprar;
     
     
+    
     private nodoAvl izq;
     private nodoAvl der;
     
     
     private int frec;
     private int fe;  
-    private int altura;    
+    private int altura;  
+    private int iD;
     
     
     public nodoAvl(String usuario, String contrasena){
@@ -38,6 +41,7 @@ public class nodoAvl implements Serializable{
         izq=der=null;
         frec=1;
         fe=0;
+        iD= id++;
     }
     
     public nodoAvl(String usuario, String contrasena, nodoAvl izq, nodoAvl der){
@@ -48,8 +52,17 @@ public class nodoAvl implements Serializable{
         this.der=der;
         frec=1;
         fe=0;
+        iD= id++;
     }
-
+    
+    
+    public String getLabel(){
+        try{
+            return "u" + this.iD;
+        }catch(Exception e1){
+            return "";
+        }
+    }
     /**
      * @return the usuario
      */

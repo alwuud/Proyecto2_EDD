@@ -11,15 +11,12 @@ import java.io.Serializable;
  *
  * @author daniel
  */
-public class Detalle implements Serializable {
-    
+public class Compra implements Serializable{
     private int cantidad;
-    private double precio;
+    private int codigoProducto;
     private Producto producto;
     
-    public Detalle(){}
-    
-    
+    public Compra(){}
 
     /**
      * @return the cantidad
@@ -36,17 +33,17 @@ public class Detalle implements Serializable {
     }
 
     /**
-     * @return the precio
+     * @return the codigoProducto
      */
-    public double getPrecio() {
-        return precio;
+    public int getCodigoProducto() {
+        return codigoProducto;
     }
 
     /**
-     * @param precio the precio to set
+     * @param codigoProducto the codigoProducto to set
      */
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setCodigoProducto(int codigoProducto) {
+        this.codigoProducto = codigoProducto;
     }
 
     /**

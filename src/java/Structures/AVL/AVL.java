@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package Structures.AVL;
+
+import Tools.Escritor;
+
 /**
  *
  * @author Pau
@@ -175,22 +178,38 @@ public class AVL {
         }
         String actual,izq,der;
         if(aux!=null){
-            actual=aux.getUsuario();
-            izq=aux.getUsuario()+"l";
-            der=aux.getUsuario()+"r";
-            puntero+=actual+"[label=\"<"+izq+">left|<"+actual+"m>"+actual+" fe:"+aux.getFe()+"|<"+der+">right\"];\r\n";
+            actual=aux.getLabel();
+            izq=aux.getLabel()+"l";
+            der=aux.getLabel()+"r";
+            puntero+=actual+"[label=\"<"+izq+">|<"+actual+"m>"+aux.getUsuario()+"|<"+der+">\"];\r\n";
             if(aux.getIzq()!=null){
                 puntero= dibujar(puntero, aux.getIzq());
-                String left=aux.getIzq().getUsuario();
-                puntero+=actual+":"+izq+"->"+left+":"+left+"m;\r\n";
+                String left=aux.getIzq().getLabel();
+                puntero+="\""+ actual+ "\"" +":"+izq+"->"+"\""+left+"\"" +":"+left+"m;\r\n";
             }
             if(aux.getDer()!=null){
                 puntero= dibujar(puntero, aux.getDer());
-                String right=aux.getDer().getUsuario();
-                puntero+=actual+":"+der+"->"+right+":"+right+"m;\r\n";  
+                String right=aux.getDer().getLabel();
+                puntero+="\""+ actual+ "\""+ ":"+der+"->"+"\""+right+"\""+":"+right+"m;\r\n";  
             } 
         }
         return puntero;
+    }
+  
+    public boolean graficar(){
+        Escritor writer= new Escritor();
+        String retorno="digraph G{ \r\n node[shape=record]; \r\n";
+        
+        try{
+            retorno+=  this.dibujar(new String(), raiz);
+            retorno+= "}";
+            writer.escribir("avl.dot",retorno);
+            Process p = Runtime.getRuntime().exec("dot -Tpng avl.dot -o avl.png");
+            return true;
+        }catch(Exception e1){
+            
+            return false;
+        }
     }
 
     public nodoAvl getRaiz() {

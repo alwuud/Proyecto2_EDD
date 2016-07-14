@@ -9,6 +9,7 @@ package Web;
 import Bussiness.Producto;
 import Structures.AVL.*;
 import Structures.Hash.Tabla;
+import Tools.Escritor;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -23,7 +24,7 @@ public class Usuario {
    
    //public static Tabla productos= new Tabla();
 
-   public static Producto[] productos = new Producto[10];
+   public static Producto[] productos = new Producto[100];
    
    public static int conteoProductos=0;
    
@@ -203,6 +204,63 @@ public class Usuario {
             return null;
         }
             
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "graficarUsuarios")
+    public Boolean graficarUsuarios(@WebParam(name = "sayHello") String sayHello) {
+        //TODO write your implementation code here:
+        try{
+            return usuarios.graficar();
+            
+        }catch(Exception e1){
+            return false;
+        }
+
+//        try{
+//            Escritor writer= new Escritor();
+//            writer.escribir("avl.dot", "digraph G{\n "  + "a->b\nb->c\na->c\n}");
+//            Process p = Runtime.getRuntime().exec("dot -Tpng avl.dot -o avl.png");
+//            return true;
+//        }catch(Exception e1){
+//            return false;
+//        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getCodigosProducto")
+    public String getCodigosProducto() {
+        //TODO write your implementation code here:
+            String retorno="";
+            try{
+                    Producto aux=null;
+                for(int i=0; i<conteoProductos; i++){
+                    aux= productos[i];
+                    if(aux!=null){
+                        retorno += aux.getCodigo() + " ";
+
+                    }
+
+            }
+        
+             return null;
+        }catch(Exception e1){
+            return null;
+        }
+        
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "cantidadProductos")
+    public Integer cantidadProductos() {
+        //TODO write your implementation code here:
+        return conteoProductos;
     }
     
     

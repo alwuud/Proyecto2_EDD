@@ -6,12 +6,13 @@
 package Bussiness;
 
 import Structures.AVL.nodoAvl;
+import java.io.Serializable;
 
 /**
  *
  * @author daniel
  */
-public class Venta {
+public class Venta implements Serializable {
     
     private int factura;
     private double total;
@@ -19,6 +20,7 @@ public class Venta {
     private nodoAvl usuario;
     
     
+    public Venta(){}
     public Venta(int factura, String fecha, nodoAvl usuario){
         this.factura=factura;
         this.fecha= fecha;

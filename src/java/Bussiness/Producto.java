@@ -17,7 +17,7 @@ public class Producto implements Serializable{
     private String nombre, marca, ruta;
     private double precio;
 
-    
+    public Producto(){}
     public Producto(int codigo){
         this.codigo= codigo;
     }

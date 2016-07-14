@@ -13,26 +13,29 @@ import Bussiness.Producto;
  */
 public class Tabla {
     
-    private Producto productos[];
-    private boolean empty[];
+    private Hash elementos[];
     private double factorCarga;
         
     
     int tamanoActual;
     
-    public Tabla(){
-        productos= new Producto[23];
-        empty= new boolean[23];
+    public Tabla(int tamano){
+        elementos=  new Hash[tamano];
+        for(int i=0; i< tamano; i++){
+            elementos[i]= new Hash();
+        }
+        
+        
         
     }
     
     
     
+    
+    
     public int hashFunction(int clave){
         
-        
         return 0;
-        
         
     }
 }
